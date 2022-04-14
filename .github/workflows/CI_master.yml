@@ -1,0 +1,28 @@
+
+name: CI_MASTER
+on: 
+  pull_request:
+      branches: [ master ]
+      types: [opened, closed]
+jobs:
+  test_build_run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: docker login
+        env:
+          DOCKER_USER: ${{ secrets.DOCKER_NAME_TOKEN }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_SECRET_TOKEN }}
+        run: docker login -u $DOCKER_USER -p  $DOCKER_PASSWORD
+      - name: Run tests
+        run: |
+          pip install pytest
+          pytest
+      - name: build docker image
+        run: docker build -t test .
+      - name: run docker image
+        run: docker run test
+      - name: docker tag
+        run: docker tag test:latest  leffeweb/test_module:test_image
+      - name: docker tagpush
+        run: docker push leffeweb/test_module:test_image
