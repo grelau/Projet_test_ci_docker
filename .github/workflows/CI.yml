@@ -7,8 +7,8 @@ jobs:
       - uses : actions/checkout@v2
       - name : Run tests
         run: |
-        pip install pytest
-        pytest
+          pip install pytest
+          pytest
       - name : build docker image
         run: 
           docker build -t test .
