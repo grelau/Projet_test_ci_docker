@@ -14,11 +14,3 @@ jobs:
         run: |
           pip install pytest
           pytest
-      - name: build docker image
-        run: docker build -t test .
-      - name: run docker image
-        run: docker run test
-      - name: docker tag
-        run: docker tag test:latest  leffeweb/test_module:test_image
-      - name: docker tagpush
-        run: docker push leffeweb/test_module:test_image
