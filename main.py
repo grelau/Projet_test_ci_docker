@@ -15,9 +15,9 @@ while user_1.is_dead() == False and user_2.is_dead() == False:
     random_health_potion_use = np.random.randint(3)
         
     if random_health_potion_use == 0:
-        HealthPotion.was_used_by(user_1)
+        HealthPotion().was_used_by(user_1)
     elif random_health_potion_use == 1:
-        HealthPotion.was_used_by(user_2)
+        HealthPotion().was_used_by(user_2)
     else:
         pass
 
