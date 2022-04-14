@@ -14,10 +14,6 @@ jobs:
           DOCKER_USER: ${{ secrets.DOCKER_NAME_TOKEN }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_SECRET_TOKEN }}
         run: docker login -u $DOCKER_USER -p  $DOCKER_PASSWORD
-      - name: Run tests
-        run: |
-          pip install pytest
-          pytest
       - name: build docker image
         run: docker build -t test .
       - name: run docker image

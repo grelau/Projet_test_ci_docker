@@ -5,10 +5,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: docker login
-        env:
-          DOCKER_USER: ${{ secrets.DOCKER_NAME_TOKEN }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_SECRET_TOKEN }}
         run: docker login -u $DOCKER_USER -p  $DOCKER_PASSWORD
       - name: Run tests
         run: |
