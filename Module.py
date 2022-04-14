@@ -22,14 +22,18 @@ class Wizard(Person):
     def __init__(self, name):
         super().__init__(name)
         self.life_points = 80
-
+        
     def hit(self, person):
         person.life_points -= 15
         return person
         
         
 class HealthPotion:
-    
-    def was_used_by(person):
+    def __init__(self):
+        self.life_given=10
         
+    def get_given_life_points(self):
+        return self.life_given
+    
+    def was_used_by(self, person):
         person.gained_life_points(10)
