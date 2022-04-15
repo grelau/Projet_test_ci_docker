@@ -3,7 +3,7 @@ import numpy as np
 
 user_1 = Person("Hero")
 user_2 = Wizard("Wizard")
-
+"sdf"
 while user_1.is_dead() == False and user_2.is_dead() == False:
     random = np.random.randint(2)
     
