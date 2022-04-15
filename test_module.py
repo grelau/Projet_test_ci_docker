@@ -16,8 +16,6 @@ def test_person():
     assert person.get_life_points() == 0, "a person should hit and loose 10hp"
     assert person.is_dead(), "a person should be dead after loosing all his hp"
     
-    person.gained_life_points(10)
-    
     # a person can heal and revive
     person.life_points = 0
     person.gained_life_points(10)
@@ -40,8 +38,6 @@ def test_wizard():
     assert wizard.get_life_points() == -10, "a wizard should hit and loose 15hp"
     assert wizard.is_dead(), "a wizard should be dead after loosing all his hp"
     
-    wizard.gained_life_points(20)
-    
     # a wizard can heal and revive
     wizard.life_points = 0
     wizard.gained_life_points(10)
@@ -54,3 +50,4 @@ def test_health_potion():
 
     assert person.life_points == 110, "potion should heal 10hp"
 
+""
