@@ -1,22 +1,10 @@
-name: CI
+name: CD 
 
 on:
-  pull_request:
+  push:
     branches: [main]
 
 jobs:
-  tests:
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout sources
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 1
-      - uses: actions/setup-python@v1
-        with:
-          python-version: "3.9"
-      - run: pip3 install -r requirements.txt
-      - run: python3 -m pytest
   build-push-image:
     steps:
       - name: Checkout 
