@@ -1,29 +1,38 @@
-from Module import Person, Wizard, HealthPotion
-import numpy as np
+def count_char(password):
+    i = 0
+    for letter in password:
+        i += 1
+    return i
 
-user_1 = Person("Hero")
-user_2 = Wizard("Wizard")
+def check_if_maj(password):
+    upper = False
+    for letter in password:
+        if letter.isupper():
+            upper = True
+    return upper
 
-while user_1.is_dead() == False and user_2.is_dead() == False:
-    random = np.random.randint(2)
-    
-    if random == 1:
-        user_1.hit(user_2)
-    else:
-        user_2.hit(user_1)
+def check_if_special(password):
+    result = False
+    special = ['!', '*', '-']
+    for letter in password:
+        if letter in special:
+            result = True
+    return result
 
-    random_health_potion_use = np.random.randint(3)
-        
-    if random_health_potion_use == 0:
-        HealthPotion.was_used_by(user_1)
-    elif random_health_potion_use == 1:
-        HealthPotion.was_used_by(user_2)
-    else:
-        pass
+def check_if_valid_password(password):
+    password_len = 10
+    if count_char(password) < password_len:
+        return False
+    if check_if_maj(password) == False:
+        return False
+    if check_if_special(password) == False:
+        return False
+    return True
 
-if user_1.get_life_points() <= 0:
-    print(user_1.name + " wins")
-if user_2.get_life_points() <= 0:
-    print(user_2.name + " wins")
+result = check_if_valid_password("Bonjourrrrrr")
+if result == True:
+    print("password is valid")
+else:
+    print('password is invalid')
 
 
